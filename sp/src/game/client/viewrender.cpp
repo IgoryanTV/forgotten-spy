@@ -5002,6 +5002,9 @@ void CShadowDepthView::Draw()
 	}
 
 	SetupCurrentView( origin, angles, VIEW_SHADOW_DEPTH_TEXTURE );
+	pRenderContext.GetFrom(materials);
+	pRenderContext->PushRenderTargetAndViewport(m_pRenderTarget, m_pDepthTexture, 0, 0, m_pDepthTexture->GetMappingWidth(), m_pDepthTexture->GetMappingWidth());
+	pRenderContext.SafeRelease();
 
 	MDLCACHE_CRITICAL_SECTION();
 
@@ -5046,6 +5049,7 @@ void CShadowDepthView::Draw()
 	}
 
 	render->PopView( GetFrustum() );
+	pRenderContext->PopRenderTargetAndViewport();
 
 #if defined( _X360 )
 	pRenderContext->PopVertexShaderGPRAllocation();

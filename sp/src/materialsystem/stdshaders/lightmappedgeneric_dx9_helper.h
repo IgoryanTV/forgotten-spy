@@ -86,6 +86,12 @@ struct LightmappedGeneric_DX9_Vars_t
 	int m_nOutlineStart1;
 	int m_nOutlineEnd0;
 	int m_nOutlineEnd1;
+	
+    // Parallax cubemaps
+    int m_nEnvmapParallaxObb1;
+    int m_nEnvmapParallaxObb2;
+    int m_nEnvmapParallaxObb3;
+    int m_nEnvmapOrigin;
 
 };
 
