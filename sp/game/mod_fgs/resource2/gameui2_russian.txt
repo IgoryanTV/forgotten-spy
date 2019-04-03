@@ -1,0 +1,36 @@
+﻿"lang"
+{
+	"Language" "Russian" 
+	"Tokens"
+	{
+		"GameUI2_LogoLeft" "Forgotten"
+		"GameUI2_LogoRight" "Spy"
+
+		"GameUI2_ResumeGame" "Вернуться в игру"
+		"GameUI2_ResumeGameDescription" "Вернуться к действию"
+
+		"GameUI2_SaveGame" "Сохранить игру"
+		"GameUI2_SaveGameDescription" "Сохранить игровой прогресс "
+
+		"GameUI2_NewGame" "Новая игра"
+		"GameUI2_NewGameDescription" "Начать новую игру или выбрать главу"
+
+		"GameUI2_LoadGame" "Загрузить игру"
+		"GameUI2_LoadGameDescription" "Загрузить одну из сохраненных игр"
+
+		"GameUI2_Options" "Настройки"
+		"GameUI2_OptionsDescription" "Настройка аудио, видео, мыши и других настроек"
+		
+		"GameUI2_Main" "Выйти в главное меню"
+		"GameUI2_MainDescription" "Позволяет вернуться в главное меню не сохраняя игру"
+
+		"GameUI2_Quit" "Выход"
+		"GameUI2_QuitDescription" "Закрыть игру"
+
+		"GameUI2_TitleOptions" "Настройки"
+
+		"GameUI2_Apply" "Применить"
+		"GameUI2_Back" "Назад"
+		"GameUI2_Done" "Готово"
+	}
+}
