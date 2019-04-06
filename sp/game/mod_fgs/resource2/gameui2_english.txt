@@ -1,0 +1,36 @@
+"lang"
+{
+	"Language" "English" 
+	"Tokens"
+	{
+		"GameUI2_P9LogoLeft" "Forgotten"
+		"GameUI2_P9LogoRight" "Spy"
+
+		"GameUI2_ResumeGame" "Resume Game"
+		"GameUI2_ResumeGameDescription" "Back to action"
+
+		"GameUI2_SaveGame" "Save Game"
+		"GameUI2_SaveGameDescription" "Save current game progress"
+
+		"GameUI2_NewGame" "New Game"
+		"GameUI2_NewGameDescription" "Start new game or select chapter"
+
+		"GameUI2_LoadGame" "Load Game"
+		"GameUI2_LoadGameDescription" "Load available save files"
+
+		"GameUI2_Options" "Options"
+		"GameUI2_OptionsDescription" "Setup audio, video, mouse and other settings"
+		
+		"GameUI2_Main" "Go to the main menu"
+		"GameUI2_MainDescription" "Allows you to return to the main menu (Don't save game!)"
+
+		"GameUI2_Quit" "Quit"
+		"GameUI2_QuitDescription" "Close the game"
+
+		"GameUI2_TitleOptions" "Options"
+
+		"GameUI2_Apply" "Apply"
+		"GameUI2_Back" "Back"
+		"GameUI2_Done" "Done"
+	}
+}

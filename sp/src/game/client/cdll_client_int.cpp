@@ -169,6 +169,10 @@ extern vgui::IInputInternal *g_InputInternal;
 #include "sixense/in_sixense.h"
 #endif
 
+#ifdef GAMEUI2
+#include "igameui2.h"
+#endif
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -213,6 +217,10 @@ IReplayPerformanceController *g_pReplayPerformanceController = NULL;
 IEngineReplay *g_pEngineReplay = NULL;
 IEngineClientReplay *g_pEngineClientReplay = NULL;
 IReplaySystem *g_pReplay = NULL;
+#endif
+
+#ifdef GAMEUI2
+IGameUI2* g_pGameUI2 = NULL;
 #endif
 
 IHaptics* haptics = NULL;// NVNT haptics system interface singleton
@@ -1152,6 +1160,42 @@ void CHLClient::PostInit()
 		}
 	}
 #endif
+
+#ifdef GAMEUI2
+	if (!CommandLine()->CheckParm("-nogameui2"))
+	{
+		const int16 modulePathLength = 2048;
+		char modulePath[modulePathLength];
+		Q_snprintf(modulePath, modulePathLength, "%s\\bin\\gameui2.dll", engine->GetGameDirectory());
+
+		CSysModule* dllModule = Sys_LoadModule(modulePath);
+		if (dllModule)
+		{
+			ConColorMsg(Color(0, 148, 255, 255), "Loaded gameui2.dll\n");
+
+			CreateInterfaceFn appSystemFactory = Sys_GetFactory(dllModule);
+
+			g_pGameUI2 = appSystemFactory ? ((IGameUI2*)appSystemFactory(GAMEUI2_DLL_INTERFACE_VERSION, NULL)) : NULL;
+			if (g_pGameUI2)
+			{
+				ConColorMsg(Color(0, 148, 255, 255), "Initializing IVGameUI2 interface...\n");
+
+				factorylist_t factories;
+				FactoryList_Retrieve(factories);
+				g_pGameUI2->Initialize(factories.appSystemFactory);
+			}
+			else
+			{
+				ConColorMsg(Color(0, 148, 255, 255), "Unable to pull IVGameUI2 interface.\n");
+			}
+		}
+		else
+		{
+			ConColorMsg(Color(0, 148, 255, 255), "Unable to load gameui2.dll from:\n%s\n", modulePath);
+		}
+	}
+#endif
+
 }
 
 //-----------------------------------------------------------------------------
@@ -1192,6 +1236,11 @@ void CHLClient::Shutdown( void )
 	UncacheAllMaterials();
 
 	IGameSystem::ShutdownAllSystems();
+	
+	#ifdef GAMEUI2
+	if (g_pGameUI2)
+		g_pGameUI2->Shutdown();
+	#endif
 	
 	gHUD.Shutdown();
 	VGui_Shutdown();
